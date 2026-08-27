@@ -1,0 +1,14 @@
+def push(stack, value):
+    if len(stack) == 3:
+        print("Stack Overflow")
+    else:
+        stack.append(value)
+
+stack = []
+
+push(stack, 10)
+push(stack, 20)
+push(stack, 30)
+push(stack, 40)
+
+print(stack)
