@@ -1,0 +1,21 @@
+def push(stack, value):
+    stack.append(value)
+
+
+def pop(stack):
+    return stack.pop()
+
+
+n = int(input("Enter the number of books: "))
+
+books = list(map(int, input("Enter the book IDs: ").split()))
+
+stack = []
+
+for book in books:
+    push(stack, book)
+
+print("Book IDs in reverse order:", end=" ")
+
+while stack:
+    print(pop(stack), end=" ")
