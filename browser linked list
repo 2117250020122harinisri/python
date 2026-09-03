@@ -1,0 +1,73 @@
+class StackNode:
+    def __init__(self, url):
+        self.url = url
+        self.next = None
+
+
+class Stack:
+    def __init__(self):
+        self.top = None
+
+    def push(self, url):
+        n = StackNode(url)
+        n.next = self.top
+        self.top = n
+
+    def pop(self):
+        url = self.top.url
+        self.top = self.top.next
+        return url
+
+
+class QueueNode:
+    def __init__(self, doc):
+        self.doc = doc
+        self.next = None
+
+
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    def enqueue(self, doc):
+        n = QueueNode(doc)
+
+        if self.rear is None:
+            self.front = self.rear = n
+        else:
+            self.rear.next = n
+            self.rear = n
+
+    def dequeue(self):
+        doc = self.front.doc
+        self.front = self.front.next
+
+        if self.front is None:
+            self.rear = None
+
+        return doc
+
+
+# Stack
+s = Stack()
+
+s.push("google.com")
+s.push("openai.com")
+s.push("github.com")
+
+print("last visited (popped):", s.pop())
+print("last visited (popped):", s.pop())
+
+
+# Queue
+q = Queue()
+
+q.enqueue("document 1.pdf")
+q.enqueue("document 2.pdf")
+q.enqueue("document 3.pdf")
+
+print("printing job:")
+print("printing:", q.dequeue())
+print("printed:", q.dequeue())
+print("printed:", q.dequeue())
