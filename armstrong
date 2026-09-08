@@ -1,0 +1,7 @@
+n = int(input("Enter a number: "))
+total = sum(int(x) ** 3 for x in str(n))
+
+if total == n:
+    print("Armstrong Number")
+else:
+    print("Not an Armstrong Number")
