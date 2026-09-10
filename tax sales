@@ -1,0 +1,78 @@
+class Node:
+    def __init__(self, c, e):
+        self.c = c
+        self.e = e
+        self.next = None
+
+def insert(head, c, e):
+    new = Node(c, e)
+
+    if head is None:
+        return new
+
+    temp = head
+    while temp.next:
+        temp = temp.next
+
+    temp.next = new
+    return head
+
+def add(p1, p2):
+    result = None
+
+    while p1 and p2:
+        if p1.e == p2.e:
+            result = insert(result, p1.c + p2.c, p1.e)
+        else:
+            result = insert(result, p1.c, p1.e)
+
+        p1 = p1.next
+        p2 = p2.next
+
+    while p1:
+        result = insert(result, p1.c, p1.e)
+        p1 = p1.next
+
+    while p2:
+        result = insert(result, p2.c, p2.e)
+        p2 = p2.next
+
+    return result
+
+def display(p):
+    while p:
+        print(p.c, "x^", p.e, end="  ")
+        p = p.next
+    print()
+
+def evaluate(p, x):
+    total = 0
+
+    while p:
+        total = total + p.c * (x ** p.e)
+        p = p.next
+
+    return total
+
+p1 = None
+p1 = insert(p1, 3, 2)
+p1 = insert(p1, 2, 1)
+p1 = insert(p1, 5, 0)
+
+p2 = None
+p2 = insert(p2, 2, 2)
+p2 = insert(p2, 4, 0)
+
+p3 = add(p1, p2)
+
+print("Tax Formula 1:")
+display(p1)
+
+print("Tax Formula 2:")
+display(p2)
+
+print("Combined Tax Formula:")
+display(p3)
+
+print("Tax Amount for income = 2:",
+      evaluate(p3, 2))
