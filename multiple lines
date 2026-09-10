@@ -1,0 +1,7 @@
+f = open("student.txt", "w")
+
+f.write("Arun\n")
+f.write("Bala\n")
+f.write("Kavi\n")
+
+f.close()
